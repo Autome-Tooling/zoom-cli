@@ -1,0 +1,26 @@
+{
+  "name": "@autome/zoom-cli",
+  "version": "1.0.0",
+  "description": "A cli for interacting with Zoom.us",
+  "main": "index.js",
+  "bin": {
+    "@autome/zoom-cli": "bin/zoom",
+    "zoom": "bin/zoom"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "zoom"
+  ],
+  "author": "Seth Fuller",
+  "license": "ISC"
+}
