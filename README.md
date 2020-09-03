@@ -1,6 +1,6 @@
 # Zoom CLI
 
-Open Zoom meetings and update the Zoom client from the command line
+A Zoom cli for developers who like the command line!
 
 ## Installation
 
