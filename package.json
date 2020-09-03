@@ -15,7 +15,9 @@
     "url": "https://github.com/Autome-Tooling/zoom-cli.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "patch": "npm version patch; npm publish;",
+    "minor": "npm version minor; npm publish;",
+    "major": "npm version major; npm publish;"
   },
   "keywords": [
     "cli",
