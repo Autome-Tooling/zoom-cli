@@ -6,9 +6,7 @@ Open Zoom meetings and update the Zoom client from the command line
 
 This repo is not published to any registry currently. So, in order to use it, do the following:
 
-1. Clone this repo to your local machine
-2. Run `npm install` in the root directory
-3. Run `npm link` in the root directory
+1. Run `npm i @autome/zoom-cli`
 
 ## Commands
 
