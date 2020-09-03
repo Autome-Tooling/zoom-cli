@@ -10,6 +10,7 @@ function parseArgumentsIntoOptions(rawArgs) {
             "--remove": String,
             "--launch": String,
             "--update": Boolean,
+            "--list": Boolean,
 
             // Aliases
             "-a": "--add",
@@ -32,6 +33,7 @@ function parseArgumentsIntoOptions(rawArgs) {
         remove: args['--remove'] || null,
         launch: args['--launch'] || null,
         update: args['--update'] || false,
+        list: args['--list'] || false,
     }
 
     if (checkIfMoreThanOne(options)) {
@@ -57,6 +59,10 @@ function checkIfMoreThanOne(options) {
     }
 
     if (options.update) {
+        count++;
+    }
+
+    if (options.list) {
         count++;
     }
 

@@ -2,3 +2,5 @@ node_modules
 ZoomInstaller.exe
 bin/config.json
 package-lock.json
+release
+*.tgz

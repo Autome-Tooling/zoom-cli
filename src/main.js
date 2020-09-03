@@ -59,6 +59,15 @@ async function update() {
     spinner.succeed("Installed");
 }
 
+function listRooms() {
+    const configPath = Config.getPath();
+    let config = Config.getJSONFromFile(configPath);
+
+    for (const room in config.rooms) {
+        Printer.printMessage(`${room}: ${config.rooms[room]}`);
+    }
+}
+
 export function run(options) {
     const action = Object.keys(options).find(key => 
         options[key] != null && options[key] != false);
@@ -74,5 +83,8 @@ export function run(options) {
     }
     else if(action === "update") {
         update();
+    }
+    else if (action === "list") {
+        listRooms();
     }
 }
