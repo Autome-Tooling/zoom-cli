@@ -4,8 +4,6 @@ A Zoom cli for developers who like the command line!
 
 ## Installation
 
-This repo is not published to any registry currently. So, in order to use it, do the following:
-
 1. `npm i -g @autome/zoom-cli`
 
 ## Commands
