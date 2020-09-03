@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path';
 import Printer from './printer'
+import Platform from './platform'
 
 export default class Config {
     static create(path) {
@@ -18,9 +19,11 @@ export default class Config {
             '../../../bin',
             'config.json'
         );
-    
-        // Remove extraneous 'C:'
-        configPath = configPath.split(/\\(.+)/)[1]
+        
+        if (Platform.isWindows()) {
+            // Remove extraneous 'C:'
+            configPath = configPath.split(/\\(.+)/)[1]
+        }
     
         try {
             fs.accessSync(configPath, fs.constants.R_OK);
