@@ -6,7 +6,7 @@ Open Zoom meetings and update the Zoom client from the command line
 
 This repo is not published to any registry currently. So, in order to use it, do the following:
 
-1. `npm i @autome/zoom-cli`
+1. `npm i -g @autome/zoom-cli`
 
 ## Commands
 
