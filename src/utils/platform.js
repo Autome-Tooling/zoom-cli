@@ -11,7 +11,6 @@ export default class Platform {
     if (process.platform === "win32") {
       return true;
     }
-
     return false;
   }
 }

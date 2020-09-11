@@ -71,20 +71,22 @@ function listRooms() {
 export function run(options) {
     const action = Object.keys(options).find(key => 
         options[key] != null && options[key] != false);
-    
-    if (action === "add") {
-        add(options[action]);
-    }
-    else if (action === "remove") {
-        remove(options[action]);
-    }
-    else if(action === "launch") {
-        launch(options[action]);
-    }
-    else if(action === "update") {
-        update();
-    }
-    else if (action === "list") {
-        listRooms();
+
+    switch(action) {
+        case "add":
+            add(options[action]);
+            break;
+        case "remove":
+            remove(options[action]);
+            break;
+        case "launch":
+            launch(options[action]);
+            break;
+        case "update":
+            update();
+            break;
+        case "list":
+            listRooms();
+            break;  
     }
 }

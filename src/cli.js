@@ -36,50 +36,33 @@ function parseArgumentsIntoOptions(rawArgs) {
         list: args['--list'] || false,
     }
 
-    if (checkIfMoreThanOne(options)) {
-        throw Error("Too many arguments!");
-    }
+    checkArgumentCount(options);
 
     return options;
 }
 
-function checkIfMoreThanOne(options) {
-    let count = 0;
+function checkArgumentCount(options) {
+    let reducer = (accumulator, currentValue) => 
+        (currentValue) ? accumulator + 1 : accumulator;
 
-    if (options.add) {
-        count++;
+    let result = Object.values(options).reduce(reducer, 0);
+
+    if (result > 1) {
+        throw Error('Too many arguments');
     }
-
-    if (options.remove) {
-        count++;
+    else if (result < 1) {
+        throw Error('Please supply an argument');
     }
-
-    if (options.launch) {
-        count++;
-    }
-
-    if (options.update) {
-        count++;
-    }
-
-    if (options.list) {
-        count++;
-    }
-
-    if (count > 1) {
-        return true;
-    }
-
-    return false;
 }
 
 export function cli(args) {
     try {
         let options = parseArgumentsIntoOptions(args);
         run(options)
+        return 0;
     }
     catch(err) {
         Printer.printError(err);
-        return;
+        return -1;
     }
 }
