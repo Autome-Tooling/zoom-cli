@@ -4,7 +4,7 @@ import Platform from './platform'
 import { homedir } from 'os'
 
 export default class Config {
-    static create(path) {
+    create(path) {
         let jsonStructure = {
             "rooms": {}
         };
@@ -12,9 +12,7 @@ export default class Config {
         fs.writeFileSync(path, JSON.stringify(jsonStructure));
     }
     
-    static getPath() {
-        const configPath = homedir() + "/.zoom";
-        
+    getPath(configPath = homedir() + "/.zoom") {        
         if (Platform.isWindows()) {
             // Remove extraneous 'C:'
             configPath = configPath.split(/\\(.+)/)[1]
@@ -32,7 +30,7 @@ export default class Config {
         return configPath;
     }
 
-    static getJSONFromFile(path) {
+    getJSONFromFile(path) {
         return JSON.parse(fs.readFileSync(path).toString());
     }
 }

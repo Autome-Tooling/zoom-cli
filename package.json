@@ -18,7 +18,8 @@
     "patch": "npm version patch; npm publish;",
     "minor": "npm version minor; npm publish;",
     "major": "npm version major; npm publish;",
-    "test": "./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
+    "test": "./node_modules/.bin/mocha src/test/**/*.js --require @babel/register",
+    "test:coverage": "nyc ./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
   },
   "keywords": [
     "cli",
