@@ -1,7 +1,7 @@
 node_modules
 ZoomInstaller.exe
 Zoom.pkg
-bin/config.json
 package-lock.json
 release
 *.tgz
+src/test/temp

@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path';
+import { homedir } from 'os'
 import axios from 'axios'
 import Printer from './printer'
 import { promisify } from 'util'
@@ -17,7 +18,7 @@ export default class Installer {
         fileName = "Zoom.pkg";
       }
 
-      const downloadPath = path.resolve(__dirname, './', fileName);
+      const downloadPath = homedir() + "/" + fileName;
       const writer = fs.createWriteStream(downloadPath)
     
       const response = await axios({

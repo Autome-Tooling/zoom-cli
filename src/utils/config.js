@@ -1,7 +1,7 @@
 import fs from 'fs'
-import path from 'path';
 import Printer from './printer'
 import Platform from './platform'
+import { homedir } from 'os'
 
 export default class Config {
     static create(path) {
@@ -13,12 +13,7 @@ export default class Config {
     }
     
     static getPath() {
-        const currentFileUrl = import.meta.url;
-        let configPath = path.resolve(
-            new URL(currentFileUrl).pathname,
-            '../../../bin',
-            'config.json'
-        );
+        const configPath = homedir() + "/.zoom";
         
         if (Platform.isWindows()) {
             // Remove extraneous 'C:'
