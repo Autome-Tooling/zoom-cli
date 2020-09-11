@@ -2,7 +2,7 @@
   "name": "@autome/zoom-cli",
   "version": "1.0.2",
   "description": "A cli for interacting with Zoom.us",
-  "main": "index.js",
+  "main": "bin/zoom",
   "bin": {
     "@autome/zoom-cli": "bin/zoom",
     "zoom": "bin/zoom"
