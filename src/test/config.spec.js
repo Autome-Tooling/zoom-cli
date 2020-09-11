@@ -1,10 +1,11 @@
-import chai, { spy } from 'chai'
+import chai from 'chai'
 import { expect } from 'chai'
 import spies from 'chai-spies'
-chai.expect();
-chai.use(spies);
 import Config from '../utils/config'
 import fs from 'fs'
+
+chai.expect();
+chai.use(spies);
 
 const CONFIG_TEST_PATH = __dirname + '/.zoom-test-config-file';
 

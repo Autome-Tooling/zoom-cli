@@ -7,7 +7,7 @@ import { exec } from 'child_process'
 import Platform from './platform'
 
 export default class Installer {
-    static async downloadInstaller () {
+    async downloadInstaller () {
       
       let fileName = "ZoomInstaller.exe";
       let url = "https://zoom.us/client/latest/ZoomInstaller.exe";
@@ -40,7 +40,7 @@ export default class Installer {
       });
     }
     
-    static async executeInstaller(path) {
+    async executeInstaller(path) {
       const execute = promisify(exec);
 
       let command = path;

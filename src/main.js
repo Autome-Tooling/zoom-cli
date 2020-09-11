@@ -54,14 +54,15 @@ function launch(roomName) {
 }
 
 async function update() {
+    let installer = new Installer();
     const spinner = ora();
 
     spinner.start("Downloading...");
-    const exePath = await Installer.downloadInstaller();
+    const exePath = await installer.downloadInstaller();
     spinner.succeed("Downloaded");
 
     spinner.start("Installing...");
-    await Installer.executeInstaller(exePath);
+    await installer.executeInstaller(exePath);
     spinner.succeed("Installed");
 }
 
