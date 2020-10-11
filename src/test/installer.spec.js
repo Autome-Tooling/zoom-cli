@@ -1,7 +1,9 @@
 import chai from 'chai'
 import { expect } from 'chai'
+import { homedir } from 'os'
 import spies from 'chai-spies'
 import Installer from '../utils/installer'
+import Platform from '../utils/platform'
 import fs from 'fs'
 
 chai.expect();
@@ -14,15 +16,12 @@ describe('Installer', () => {
     installer = new Installer();
   });
 
-  it('should download the installer', () => {
-    
-  });
+  it('should download the installer', async () => {
+    let installerName = (Platform.isMac()) ? 'Zoom.pkg' : 'ZoomInstaller.exe';
 
-  it('should download the Mac installer when the platform is Mac', () => {
+    let result = await installer.downloadInstaller();
 
-  });
-
-  it('should download the Windows installer when the platform is Windows', () => {
-
+    expect(result).to.equal(homedir() + "/" + installerName);
+    expect(fs.existsSync(result)).to.be.true;
   });
 });

@@ -18,13 +18,15 @@
     "patch": "npm version patch; npm publish;",
     "minor": "npm version minor; npm publish;",
     "major": "npm version major; npm publish;",
-    "test": "./node_modules/.bin/mocha src/test/**/*.js --require @babel/register",
-    "test:coverage": "nyc ./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
+    "test": "nyc ./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
   },
   "keywords": [
     "cli",
     "zoom",
-    "automation"
+    "automation",
+    "zoom.us",
+    "videoconferencing",
+    "tool"
   ],
   "author": "Seth Fuller",
   "license": "ISC",
@@ -50,7 +52,7 @@
     "@babel/register": "^7.11.5",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
-    "istanbul": "^0.4.5",
+    "nyc": "^15.1.0",
     "mocha": "^8.1.3"
   }
 }

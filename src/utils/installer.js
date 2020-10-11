@@ -52,5 +52,7 @@ export default class Installer {
       }
 
       await execute(command);
+
+      return true;
     }
 }
