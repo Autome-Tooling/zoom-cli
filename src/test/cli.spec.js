@@ -38,4 +38,3 @@ describe('CLI', () => {
     expect(() => cli.parseArgumentsIntoOptions(argumentsToParse)).to.throw('Unknown argument');
   });
 });
-
