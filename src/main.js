@@ -6,29 +6,33 @@ import Printer from './utils/printer'
 import Installer from './utils/installer'
 
 function add(room) {
-    const configPath = Config.getPath();
+    let config = new Config();
+
+    const configPath = config.getPath();
     const pair = room.split(/:(.+)/);
 
-    let config = Config.getJSONFromFile(configPath);
+    let configJson = config.getJSONFromFile(configPath);
     
-    if (Object.keys(config.rooms).includes(pair[0])) {
+    if (Object.keys(configJson.rooms).includes(pair[0])) {
         throw Error("This room already exists")
     }
     else {
-        config.rooms[pair[0]] = pair[1];
-        fs.writeFileSync(configPath, JSON.stringify(config));
+        configJson.rooms[pair[0]] = pair[1];
+        fs.writeFileSync(configPath, JSON.stringify(configJson));
     }
 
     Printer.printSuccess("Successfully added room!")
 }
 
 function remove(roomName) {
-    const configPath = Config.getPath();
-    let config = Config.getJSONFromFile(configPath);
-    let keys = Object.keys(config.rooms);
+    let config = new Config();
+
+    const configPath = config.getPath();
+    let configJson = config.getJSONFromFile(configPath);
+    let keys = Object.keys(configJson.rooms);
     if (keys.includes(roomName)) {
-        delete config.rooms[roomName];
-        fs.writeFileSync(configPath, JSON.stringify(config));
+        delete configJson.rooms[roomName];
+        fs.writeFileSync(configPath, JSON.stringify(configJson));
         Printer.printSuccess(`The '${roomName}' room has been removed`);
     }
     else {
@@ -37,10 +41,12 @@ function remove(roomName) {
 }
 
 function launch(roomName) {
-    const configPath = Config.getPath();
-    const config = Config.getJSONFromFile(configPath);
-    if (Object.keys(config.rooms).includes(roomName)) {
-        open(config.rooms[roomName]);
+    let config = new Config();
+
+    const configPath = config.getPath();
+    const configJson = config.getJSONFromFile(configPath);
+    if (Object.keys(configJson.rooms).includes(roomName)) {
+        open(configJson.rooms[roomName]);
     }
     else {
         throw Error('Invalid room');
@@ -48,23 +54,26 @@ function launch(roomName) {
 }
 
 async function update() {
+    let installer = new Installer();
     const spinner = ora();
 
     spinner.start("Downloading...");
-    const exePath = await Installer.downloadInstaller();
+    const exePath = await installer.downloadInstaller();
     spinner.succeed("Downloaded");
 
     spinner.start("Installing...");
-    await Installer.executeInstaller(exePath);
+    await installer.executeInstaller(exePath);
     spinner.succeed("Installed");
 }
 
 function listRooms() {
-    const configPath = Config.getPath();
-    let config = Config.getJSONFromFile(configPath);
+    let config = new Config();
 
-    for (const room in config.rooms) {
-        Printer.printMessage(`${room}: ${config.rooms[room]}`);
+    const configPath = config.getPath();
+    let configJson = config.getJSONFromFile(configPath);
+
+    for (const room in configJson.rooms) {
+        Printer.printMessage(`${room}: ${configJson.rooms[room]}`);
     }
 }
 

@@ -2,7 +2,7 @@
   "name": "@autome/zoom-cli",
   "version": "1.0.2",
   "description": "A cli for interacting with Zoom.us",
-  "main": "index.js",
+  "main": "bin/zoom",
   "bin": {
     "@autome/zoom-cli": "bin/zoom",
     "zoom": "bin/zoom"
@@ -17,12 +17,16 @@
   "scripts": {
     "patch": "npm version patch; npm publish;",
     "minor": "npm version minor; npm publish;",
-    "major": "npm version major; npm publish;"
+    "major": "npm version major; npm publish;",
+    "test": "nyc ./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
   },
   "keywords": [
     "cli",
     "zoom",
-    "automation"
+    "automation",
+    "zoom.us",
+    "videoconferencing",
+    "tool"
   ],
   "author": "Seth Fuller",
   "license": "ISC",
@@ -37,6 +41,19 @@
     "ora": "^5.0.0",
     "path": "^0.12.7",
     "request": "^2.88.2",
+    "sinon": "^9.2.0",
     "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.11.5",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "nyc": "^15.1.0",
+    "mocha": "^8.1.3"
   }
 }

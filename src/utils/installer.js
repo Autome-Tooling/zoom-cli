@@ -1,5 +1,5 @@
 import fs from 'fs'
-import path from 'path';
+import { homedir } from 'os'
 import axios from 'axios'
 import Printer from './printer'
 import { promisify } from 'util'
@@ -7,7 +7,7 @@ import { exec } from 'child_process'
 import Platform from './platform'
 
 export default class Installer {
-    static async downloadInstaller () {
+    async downloadInstaller () {
       
       let fileName = "ZoomInstaller.exe";
       let url = "https://zoom.us/client/latest/ZoomInstaller.exe";
@@ -17,7 +17,7 @@ export default class Installer {
         fileName = "Zoom.pkg";
       }
 
-      const downloadPath = path.resolve(__dirname, './', fileName);
+      const downloadPath = homedir() + "/" + fileName;
       const writer = fs.createWriteStream(downloadPath)
     
       const response = await axios({
@@ -40,7 +40,7 @@ export default class Installer {
       });
     }
     
-    static async executeInstaller(path) {
+    async executeInstaller(path) {
       const execute = promisify(exec);
 
       let command = path;
@@ -52,5 +52,7 @@ export default class Installer {
       }
 
       await execute(command);
+
+      return true;
     }
 }

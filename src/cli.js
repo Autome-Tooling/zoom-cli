@@ -55,7 +55,7 @@ function checkArgumentCount(options) {
     }
 }
 
-export function cli(args) {
+function cli(args) {
     try {
         let options = parseArgumentsIntoOptions(args);
         run(options)
@@ -65,4 +65,9 @@ export function cli(args) {
         Printer.printError(err);
         return -1;
     }
+}
+
+export default {
+    parseArgumentsIntoOptions,
+    cli
 }

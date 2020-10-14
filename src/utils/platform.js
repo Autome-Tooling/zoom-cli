@@ -1,16 +1,9 @@
 export default class Platform {
   static isMac() {
-    if (process.platform === "darwin") {
-      return true;
-    }
-    
-    return false;
+    return process.platform === "darwin";
   }
 
   static isWindows() {
-    if (process.platform === "win32") {
-      return true;
-    }
-    return false;
+    return process.platform === "win32";
   }
 }
