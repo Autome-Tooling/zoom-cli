@@ -1,38 +1,31 @@
 import fs from 'fs'
 import open from 'open'
 import ora from 'ora'
-import Config from './utils/config'
 import Printer from './utils/printer'
 import Installer from './utils/installer'
 
-function add(room) {
-    let config = new Config();
-
-    const configPath = config.getPath();
+function add(room, configService) {
     const pair = room.split(/:(.+)/);
-
-    let configJson = config.getJSONFromFile(configPath);
+    let configJson = configService.getJSONFromFile();
     
     if (Object.keys(configJson.rooms).includes(pair[0])) {
         throw Error("This room already exists")
     }
     else {
         configJson.rooms[pair[0]] = pair[1];
-        fs.writeFileSync(configPath, JSON.stringify(configJson));
+        fs.writeFileSync(configService.getPath(), JSON.stringify(configJson));
     }
 
     Printer.printSuccess("Successfully added room!")
 }
 
-function remove(roomName) {
-    let config = new Config();
-
-    const configPath = config.getPath();
-    let configJson = config.getJSONFromFile(configPath);
+function remove(roomName, configService) {
+    let configJson = configService.getJSONFromFile();
     let keys = Object.keys(configJson.rooms);
+    
     if (keys.includes(roomName)) {
         delete configJson.rooms[roomName];
-        fs.writeFileSync(configPath, JSON.stringify(configJson));
+        fs.writeFileSync(configService.getPath(), JSON.stringify(configJson));
         Printer.printSuccess(`The '${roomName}' room has been removed`);
     }
     else {
@@ -40,11 +33,8 @@ function remove(roomName) {
     }
 }
 
-function launch(roomName) {
-    let config = new Config();
-
-    const configPath = config.getPath();
-    const configJson = config.getJSONFromFile(configPath);
+function launch(roomName, configService) {
+    const configJson = configService.getJSONFromFile();
     if (Object.keys(configJson.rooms).includes(roomName)) {
         open(configJson.rooms[roomName]);
     }
@@ -66,36 +56,33 @@ async function update() {
     spinner.succeed("Installed");
 }
 
-function listRooms() {
-    let config = new Config();
-
-    const configPath = config.getPath();
-    let configJson = config.getJSONFromFile(configPath);
+function listRooms(configService) {
+    let configJson = configService.getJSONFromFile();
 
     for (const room in configJson.rooms) {
         Printer.printMessage(`${room}: ${configJson.rooms[room]}`);
     }
 }
 
-export function run(options) {
+export function run(options, configService) {
     const action = Object.keys(options).find(key => 
         options[key] != null && options[key] != false);
 
     switch(action) {
         case "add":
-            add(options[action]);
+            add(options[action], configService);
             break;
         case "remove":
-            remove(options[action]);
+            remove(options[action], configService);
             break;
         case "launch":
-            launch(options[action]);
+            launch(options[action], configService);
             break;
         case "update":
             update();
             break;
         case "list":
-            listRooms();
+            listRooms(configService);
             break;  
     }
 }

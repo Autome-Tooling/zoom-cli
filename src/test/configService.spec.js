@@ -9,7 +9,7 @@ chai.use(spies);
 
 const CONFIG_TEST_PATH = __dirname + '/.zoom-test-config-file';
 
-describe("Config", () => {
+describe("Config Service", () => {
   let config;
 
   beforeEach(() => {
