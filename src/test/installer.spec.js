@@ -1,13 +1,8 @@
-import chai from 'chai'
 import { expect } from 'chai'
 import { homedir } from 'os'
-import spies from 'chai-spies'
 import Installer from '../utils/installer'
 import Platform from '../utils/platform'
 import fs from 'fs'
-
-chai.expect();
-chai.use(spies);
 
 describe('Installer', () => {
   let installer;

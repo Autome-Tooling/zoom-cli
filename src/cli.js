@@ -1,11 +1,11 @@
 import arg from 'arg'
 import Printer from './utils/printer'
+import ConfigService from './services/configService'
 import { run } from './main'
 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
         {
-            // Main
             "--add": String,
             "--remove": String,
             "--launch": String,
@@ -58,7 +58,11 @@ function checkArgumentCount(options) {
 function cli(args) {
     try {
         let options = parseArgumentsIntoOptions(args);
-        run(options)
+
+        let configService = new ConfigService();
+        configService.create();
+
+        run(options, configService);
         return 0;
     }
     catch(err) {
