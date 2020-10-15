@@ -17,7 +17,7 @@ Here are the commands that this package provides.
 + `zoom -u` || `zoom --update`: This command updates your Zoom client.
 + `zoom --list`: This command lists all of the rooms that you currently have in your configuration.
 
-### Testing
+## Testing
 
 If you want to run the tests using VSCode, you must do the following steps
 1. Install the [Mocha Test Explorer](https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter)
