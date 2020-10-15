@@ -15,9 +15,9 @@
     "url": "https://github.com/Autome-Tooling/zoom-cli.git"
   },
   "scripts": {
-    "patch": "npm version patch; npm publish;",
-    "minor": "npm version minor; npm publish;",
-    "major": "npm version major; npm publish;",
+    "patch": "npm version patch; git push; npm publish;",
+    "minor": "npm version minor; git push; npm publish;",
+    "major": "npm version major; git push; npm publish;",
     "test": "nyc ./node_modules/.bin/mocha src/test/**/*.js --require @babel/register"
   },
   "keywords": [
