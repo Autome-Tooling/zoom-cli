@@ -1,19 +1,18 @@
-import chai, { config } from 'chai'
-import { expect } from 'chai'
-import spies from 'chai-spies'
-import sinon from 'sinon'
-import ConfigService from '../services/configService'
-import fs from 'fs'
-import { homedir } from 'os'
-import Platform from '../utils/platform'
+import chai, { config } from 'chai';
+import { expect } from 'chai';
+import spies from 'chai-spies';
+import sinon from 'sinon';
+import ConfigService from '../services/configService';
+import fs from 'fs';
+import { homedir } from 'os';
+import Platform from '../utils/platform';
 
 chai.expect();
 chai.use(spies);
 
 const CONFIG_TEST_PATH = __dirname + '/.zoom-test-config-file';
 
-describe("Config Service", () => {
-
+describe('Config Service', () => {
   let configService;
 
   before(() => {
@@ -34,7 +33,7 @@ describe("Config Service", () => {
     expect(result).to.equal(0);
     expect(fs.existsSync(CONFIG_TEST_PATH)).to.be.true;
 
-    sinon.rese
+    sinon.rese;
   });
 
   it('should not create config if already present', () => {
@@ -62,7 +61,7 @@ describe("Config Service", () => {
     expect(result).to.be.true;
   });
 
-  it ('should return false if config does not exist', () => {
+  it('should return false if config does not exist', () => {
     sinon.stub(configService, 'getPath').returns(CONFIG_TEST_PATH);
 
     let result = configService.configExists();
@@ -70,15 +69,14 @@ describe("Config Service", () => {
     expect(result).to.be.false;
   });
 
-  it ('should return correct path', () => {
+  it('should return correct path', () => {
     let configService = new ConfigService();
 
     let result = configService.getPath();
 
     if (Platform.isMac()) {
       expect(result).to.equal(homedir() + '/.zoom');
-    }
-    else if (Platform.isWindows()) {
+    } else if (Platform.isWindows()) {
       expect(result).to.equal((homedir() + '/.zoom').split(/\\(.+)/)[1]);
     }
   });

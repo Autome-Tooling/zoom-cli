@@ -1,4 +1,4 @@
-import fs from 'fs'
+import fs from 'fs';
 import { homedir } from 'os';
 import Platform from '../utils/platform';
 import Printer from '../utils/printer';
@@ -8,7 +8,7 @@ export default class ConfigService {
 
   getPath() {
     let path = homedir() + '/.zoom';
-    
+
     // Remove extraneous 'C:'
     if (Platform.isWindows()) {
       path = path.split(/\\(.+)/)[1];
@@ -23,21 +23,20 @@ export default class ConfigService {
 
   create() {
     if (!this.configExists()) {
-      Printer.printError(new Error("Config not found"));
+      Printer.printError(new Error('Config not found'));
 
       let jsonStructure = {
-        "rooms": {}
+        rooms: {},
       };
-      
+
       try {
-        Printer.printMessage("Creating config...");
-        
+        Printer.printMessage('Creating config...');
+
         fs.writeFileSync(this.getPath(), JSON.stringify(jsonStructure));
-        
-        Printer.printSuccess("Created config!");
+
+        Printer.printSuccess('Created config!');
         return 0;
-      } 
-      catch(err) {
+      } catch (err) {
         Printer.printError('Could not create config');
         return -1;
       }
