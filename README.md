@@ -1,4 +1,5 @@
 # Zoom CLI
+![Node.js CI](https://github.com/Autome-Tooling/zoom-cli/workflows/Node.js%20CI/badge.svg)
 
 A Zoom cli for developers who like the command line!
 
