@@ -5,7 +5,7 @@ A Zoom cli for developers who like the command line!
 
 ## Installation
 
-1. `npm i -g @autome/zoom-cli`
+`npm i -g @autome/zoom-cli`
 
 ## Commands
 
