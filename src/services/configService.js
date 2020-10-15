@@ -4,16 +4,7 @@ import Platform from '../utils/platform';
 import Printer from '../utils/printer';
 
 export default class ConfigService {
-  constructor() {
-    try {
-      fs.accessSync(this.getPath(), fs.constants.R_OK);
-    } catch(err) {
-      Printer.printError(new Error("Config not found"));
-      Printer.printMessage("Creating config...");
-      this.create();
-      Printer.printSuccess("Created config!");
-    }
-  }
+  constructor() {}
 
   getPath() {
     let path = homedir() + '/.zoom';
@@ -26,12 +17,32 @@ export default class ConfigService {
     return path;
   }
 
+  configExists() {
+    return fs.existsSync(this.getPath());
+  }
+
   create() {
-    let jsonStructure = {
-      "rooms": {}
-    };
-  
-    fs.writeFileSync(this.getPath(), JSON.stringify(jsonStructure));
+    if (!this.configExists()) {
+      Printer.printError(new Error("Config not found"));
+
+      let jsonStructure = {
+        "rooms": {}
+      };
+      
+      try {
+        Printer.printMessage("Creating config...");
+        
+        fs.writeFileSync(this.getPath(), JSON.stringify(jsonStructure));
+        
+        Printer.printSuccess("Created config!");
+        return 0;
+      } 
+      catch(err) {
+        Printer.printError('Could not create config');
+        return -1;
+      }
+    }
+    return 0;
   }
 
   getJSONFromFile() {

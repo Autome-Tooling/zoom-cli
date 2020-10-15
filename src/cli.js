@@ -60,6 +60,7 @@ function cli(args) {
         let options = parseArgumentsIntoOptions(args);
 
         let configService = new ConfigService();
+        configService.create();
 
         run(options, configService);
         return 0;
