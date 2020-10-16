@@ -7,7 +7,8 @@ export default class ConfigService {
   constructor() {}
 
   getPath() {
-    let path = homedir() + '/.zoom';
+    let pathSlash = (Platform.isMac) ? '/' : '\\';
+    let path = homedir() + pathSlash + '.zoom';
 
     // Remove extraneous 'C:'
     if (Platform.isWindows()) {
