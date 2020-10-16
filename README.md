@@ -1,5 +1,5 @@
 <!-- ![Autome Tooling](./src/resources/Autome.png =100x20) -->
-<img src="./src/resources/Autome.png" alt="drawing" style="width:400px;"/>
+<img src="./src/resources/Autome.png" alt="drawing" width=500/>
 
 # Zoom CLI
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Autome-Tooling/zoom-cli/blob/master/LICENSE) ![CI](https://github.com/Autome-Tooling/zoom-cli/workflows/Node.js%20CI/badge.svg)
