@@ -29,7 +29,7 @@
     "tool"
   ],
   "author": "Seth Fuller",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "arg": "^4.1.3",
     "axios": "^0.20.0",
