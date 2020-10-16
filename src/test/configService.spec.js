@@ -10,7 +10,7 @@ import Platform from '../utils/platform';
 chai.expect();
 chai.use(spies);
 
-const CONFIG_TEST_PATH = __dirname + '/.zoom-test-config-file';
+const CONFIG_TEST_PATH = homedir() + '/.zoom-test-config-file';
 
 describe('Config Service', () => {
   let configService;
