@@ -1,5 +1,5 @@
 # Zoom CLI
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![Node.js CI](https://github.com/Autome-Tooling/zoom-cli/workflows/Node.js%20CI/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![CI](https://github.com/Autome-Tooling/zoom-cli/workflows/Node.js%20CI/badge.svg)
 
 A Zoom cli for developers who like the command line!
 
