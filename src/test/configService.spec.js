@@ -1,4 +1,4 @@
-import chai, { config } from 'chai';
+import chai from 'chai';
 import { expect } from 'chai';
 import spies from 'chai-spies';
 import sinon from 'sinon';
