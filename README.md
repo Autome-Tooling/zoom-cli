@@ -13,8 +13,12 @@ A Zoom cli for developers who like the command line!
 
 Here are the commands that this package provides.
 
+### Add a Zoom room
+`zoom -a [room:url]` `zoom --add [room:url]`
+
+This command adds a new Zoom room link to your configuration. Make sure that you provide a key, which is the name of the Zoom room, along with the url to the Zoom room. Make sure that your separate the two with a `:`. For example, `zoom -a myNewRoom:https://zoom.us/exampleurl/`.
+
 + `zoom -l [room name]`: This command opens up a Zoom meeting in the browser
-+ `zoom -a [key(room name):url]` || `zoom --add [key(room name):url]`: This command adds a new Zoom room to your configuration. Make sure that you provide a key, which is whatever you want to launch the Zoom room with, along with the url to the Zoom room. Make sure that your separate the two with a `:`.
 + `zoom -r [room name]` || `zoom --remove [room name]`: This command removes the Zoom room from your configuration.
 + `zoom -u` || `zoom --update`: This command updates your Zoom client.
 + `zoom --list`: This command lists all of the rooms that you currently have in your configuration.
